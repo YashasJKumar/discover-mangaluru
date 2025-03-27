@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Mangaluru - Coastal Karnataka's Hidden Gem</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700&display=swap">
+    <style>
+        :root {
+            --primary: #2a5c8d;
+            --secondary: #f7b733;
+            --accent: #e14d43;
+            --light: #f7f9fc;
+            --dark: #1a2b4a;
+            --text: #333333;
+            --text-light: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1582979512210-99b6a53386f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .hero-content {
+            margin-top: 4rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e6a227;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Intro Section */
+        .intro {
+            padding: 5rem 0;
+            text-align: center;
+            background-color: white;
+        }
+
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .intro h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+
+        .intro p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--text-light);
+        }
+
+        /* Destinations Section */
+        .destinations {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .destination-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .destination-card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content .location {
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .card-content .location svg {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+
+        .card-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .card-content .btn {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 5rem 0;
+            background: linear-gradient(rgba(42, 92, 141, 0.9), rgba(42, 92, 141, 0.9)), url('https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-1.2.1&auto=format&fit=croll&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            border-radius: 0 50px 50px 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #e6a227;
+        }
+
+        .author-profile {
+            padding: 5rem 0;
+            background-color: white;
+        }
+
+        .author-card {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .author-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 5px solid #f7f9fc;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h3 {
+            font-size: 1.8rem;
+            color: #1a2b4a;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-title {
+            color: #e14d43;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .author-bio {
+            color: #6c757d;
+            line-height: 1.7;
+        }
+
+        @media (min-width: 768px) {
+            .author-card {
+                flex-direction: row;
+                text-align: left;
+                max-width: 800px;
+            }
+
+            .author-image {
+                margin-right: 2rem;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+        }
+
+        /* Footer */
+
+        footer {
+            background-color: #1a2b4a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #f7b733;
+        }
+
+        .copyright p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 50px;
+                margin-bottom: 1rem;
+            }
+
+            .newsletter-form button {
+                border-radius: 50px;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">Discover Mangaluru</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header id="home" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/72/89/46/photo4jpg.jpg?w=1200&h=700&s=1') no-repeat center center/cover;">
+    <div class="hero-content">
+        <h1>Explore the Coastal Beauty of Mangaluru</h1>
+        <p>Discover pristine beaches, historic temples, and the rich cultural heritage of Karnataka's port city</p>
+        <a href="#destinations" class="btn">Explore Destinations</a>
+        <a href="#contact" class="btn btn-outline">Contact Us</a>
+    </div>
+</header>
+
+<!-- Intro Section -->
+<section class="intro">
+    <div class="container">
+        <h2>The Gateway to Karnataka</h2>
+        <p>Mangaluru, formerly known as Mangalore, is a picturesque coastal city in Karnataka that offers a perfect blend of natural beauty, cultural heritage, and modern amenities. From its golden beaches to historic temples and delicious cuisine, Mangaluru promises an unforgettable experience for every traveler.</p>
+    </div>
+</section>
+
+<!-- Destinations Section -->
+<section class="destinations" id="destinations">
+    <div class="container">
+        <div class="section-title">
+            <h2>Must-Visit Places in Mangaluru</h2>
+        </div>
+
+        <div class="destination-grid">
+            <!-- Destination 1 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Panambur_Beach_Mangalore.jpg" alt="Panambur Beach">
+                </div>
+                <div class="card-content">
+                    <h3>Panambur Beach</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>13 km from city center</span>
+                    </div>
+                    <p>One of the most popular beaches in Mangaluru known for its golden sands and water sports activities. Perfect for sunset views and family picnics.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Destination 2 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Kadri_temple_entrance_mangalore.jpg" alt="Kadri Manjunath Temple">
+                </div>
+                <div class="card-content">
+                    <h3>Kadri Manjunath Temple</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>4 km from city center</span>
+                    </div>
+                    <p>A historic 10th-century temple dedicated to Lord Shiva, known for its bronze statue of Lokeshwara and beautiful architecture.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Destination 3 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Sultan_Battery_2163.JPG" alt="Sultan Battery">
+                </div>
+                <div class="card-content">
+                    <h3>Sultan Battery</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>6 km from city center</span>
+                    </div>
+                    <p>A historic watchtower built by Tipu Sultan in black stones, located at the confluence of Gurupura River and Arabian Sea.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Destination 4 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://karnatakatourism.org/wp-content/uploads/2020/05/Tannirbhavi-Beach_1000x500-1.jpg" alt="Tannirbhavi Beach">
+                </div>
+                <div class="card-content">
+                    <h3>Tannirbhavi Beach</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>10 km from city center</span>
+                    </div>
+                    <p>A serene beach accessible by ferry or road, offering peaceful surroundings away from city crowds. Ideal for relaxation.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Destination 5 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://visitmangalore.in/_next/image?url=https%3A%2F%2Fapi.visitmangalore.in%2Fuploads%2FALOY_CHURCH_1_0994e273b0.jpg&w=3840&q=75" alt="St. Aloysius Chapel">
+                </div>
+                <div class="card-content">
+                    <h3>St. Aloysius Chapel</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>City center</span>
+                    </div>
+                    <p>Famous for its stunning frescoes and paintings that resemble the Sistine Chapel in Rome. A masterpiece of religious art.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Destination 6 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pilikula Nisargadhama">
+                </div>
+                <div class="card-content">
+                    <h3>Pilikula Nisargadhama</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>12 km from city center</span>
+                    </div>
+                    <p>A biological park with zoo, science center, lake, and golf course. Perfect for nature lovers and family outings.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Destination 7 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/6c/d2/5d/caption.jpg?w=900&h=500&s=1" alt="Ullal Beach">
+                </div>
+                <div class="card-content">
+                    <h3>Ullal Beach</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>15 km from city center</span>
+                    </div>
+                    <p>A beautiful beach known for its scenic beauty and the Summer Sands Beach Resort. Great for swimming and water sports.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Destination 8 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://mangaloretourism.in/images/places-to-visit/header/mangaladevi-temple-mangalore-tourism-entry-fee-timings-holidays-reviews-header.jpg" alt="Mangaladevi Temple">
+                </div>
+                <div class="card-content">
+                    <h3>Mangaladevi Temple</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>3 km from city center</span>
+                    </div>
+                    <p>The temple from which Mangaluru gets its name, dedicated to Goddess Mangaladevi. A significant pilgrimage site.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Destination 9 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://mangalurusmartcity.net/contents/1771611.90275644-284493.897024618.jpg" alt="Someshwara Beach">
+                </div>
+                <div class="card-content">
+                    <h3>Someshwara Beach</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>8 km from city center</span>
+                    </div>
+                    <p>A clean and less crowded beach near the Someshwara Temple, offering beautiful views and peaceful atmosphere.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Destination 10 -->
+            <div class="destination-card">
+                <div class="card-img">
+                    <img src="https://s7ap1.scene7.com/is/image/incredibleindia/1-kudroli-temple-mangalore-karnataka-attr-hero?qlt=82&ts=1726722399469" alt="Thannirbavi Tree Park">
+                </div>
+                <div class="card-content">
+                    <h3>Kudroli Gokarnanatheshwara Temple</h3>
+                    <div class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>2 km from city center</span>
+                    </div>
+                    <p>It was consecrated by Narayana Guru. It is dedicated to Gokarnanatha, a form of Lord Shiva. This temple was built in 1912 by Adhyaksha HoigeBazar Coragappa.</p>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="section-title">
+            <h2>What Visitors Say</h2>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="quote">"Mangaluru's beaches are absolutely breathtaking. The sunset at Panambur Beach was the highlight of our trip!"</p>
+                <div class="testimonial-author">
+                    <div class="author-img">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Priya Sharma">
+                    </div>
+                    <div class="author-info">
+                        <h4>Priya Sharma</h4>
+                        <p>From Mumbai</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"The blend of cultures in Mangaluru is fascinating. The food, the temples, the churches - everything was amazing."</p>
+                <div class="testimonial-author">
+                    <div class="author-img">
+                        <img src="https://avatars.githubusercontent.com/u/96561749?v=4" alt="Hariprasad Guttedar">
+                    </div>
+                    <div class="author-info">
+                        <h4>Hariprasad Guttedar</h4>
+                        <p>From Kalaburagi</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="quote">"Pilikula Nisargadhama was perfect for our family outing. The kids loved the zoo and boating in the lake."</p>
+                <div class="testimonial-author">
+                    <div class="author-img">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Anita Desai">
+                    </div>
+                    <div class="author-info">
+                        <h4>Anita Desai</h4>
+                        <p>From Bangalore</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter">
+    <div class="container">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for travel tips, upcoming events, and special offers in Mangaluru.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+<!-- Author Profile Section -->
+<section class="author-profile" id="author">
+    <div class="container">
+        <div class="section-title">
+            <h2>About The Author</h2>
+        </div>
+
+        <div class="author-card">
+            <div class="author-image">
+                <img src="https://img.freepik.com/premium-photo/man-hoodie-is-sitting-dark-room-with-laptop_431161-2546.jpg" alt="Author Name">
+            </div>
+            <div class="author-info">
+                <h3>Yashas J Kumar</h3>
+                <p class="author-title">Final Year Engineering Student</p>
+                <p class="author-bio">Born and raised in Mysuru, I've been exploring and documenting the hidden gems of this coastal paradise for over a decade.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <h3>Discover Mangaluru</h3>
+            <p>Explore the coastal beauty of Karnataka's hidden gem</p>
+
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#contact">Contact</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Discover Mangaluru. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
